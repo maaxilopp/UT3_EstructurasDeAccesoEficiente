@@ -1,4 +1,32 @@
 package ucu.edu.aed.tda.trie.impl;
 
-public class Trie {
+import ucu.edu.aed.tda.trie.Entry;
+import ucu.edu.aed.tda.trie.TTrie;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+
+public class Trie implements TTrie {
+    ArrayList <NodoTrie> raiz = null;
+
+    @Override
+    public void recorrer(Consumer consumer) {
+
+    }
+
+    @Override
+    public Entry buscar(String palabra) {
+        return null;
+    }
+
+    @Override
+    public boolean insertar(String palabra, Object dato) {
+        return false;
+    }
+
+    @Override
+    public List<Entry> predecir(String prefijo) {
+        return List.of();
+    }
 }

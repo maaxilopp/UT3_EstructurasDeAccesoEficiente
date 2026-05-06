@@ -15,7 +15,7 @@ public class Main {
     private static final int REPETICIONES = 100;
 
     public static void main(String[] args) {
-        TTrie<String> trie = new Trie<>();
+        TTrie<String> trie = new Trie();
         LinkedList<String> linkedList = new LinkedList<>();
         ArrayList<String> arrayList = new ArrayList<>();
         Map<String, String> hashMap = new HashMap<>();
