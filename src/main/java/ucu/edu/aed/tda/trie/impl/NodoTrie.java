@@ -1,0 +1,47 @@
+package ucu.edu.aed.tda.trie.impl;
+
+import ucu.edu.aed.tda.trie.Entry;
+import ucu.edu.aed.tda.trie.TNodoTrie;
+
+import java.util.List;
+import java.util.function.Consumer;
+
+public class NodoTrie implements TNodoTrie<String> {
+    private final NodoTrie[] hijos;
+    private String dato;
+
+    public NodoTrie() {
+        this.hijos = new NodoTrie[26];
+        this.dato = null;
+    }
+
+    @Override
+    public void recorrer(Consumer<Entry<String>> consumer) {
+
+    }
+
+    @Override
+    public Entry<String> buscar(String palabra) {
+        return null;
+    }
+
+    @Override
+    public boolean insertar(String palabra, String dato) {
+        return false;
+    }
+
+    @Override
+    public List<Entry<String>> predecir(String prefijo) {
+        return List.of();
+    }
+
+    @Override
+    public String getDato() {
+        return dato;
+    }
+
+    @Override
+    public boolean esPalabra() {
+        return dato != null;
+    }
+}
