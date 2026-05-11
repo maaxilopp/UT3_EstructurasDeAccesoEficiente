@@ -1,5 +1,5 @@
 # UNIDAD TEMATICA 3 - Estructuras de acceso eficiente
-## Equipo 1 UNIDAD TEMATICA 3 - 
+## Equipo 1 
 [![Maximiliano López](https://img.shields.io/badge/GitHub-Maximiliano_López-B7E3FF?logo=github&logoColor=black)](https://github.com/maaxilopp) [![Juan Baldenegro](https://img.shields.io/badge/GitHub-Juan_Baldenegro-A8E6CF?logo=github&logoColor=black)](https://github.com/juanBalde2002) [![Trinidad Bunge](https://img.shields.io/badge/GitHub-Trinidad_Bunge-FFD966?logo=github&logoColor=black)](https://github.com/trinibunge)
 ## Intención:
 Analizar las características de los árboles genéricos y tries, y sus aplicaciones.
