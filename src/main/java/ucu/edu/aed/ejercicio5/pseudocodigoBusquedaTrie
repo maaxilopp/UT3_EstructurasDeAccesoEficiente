@@ -5,31 +5,35 @@ LENGUAJE NATURAL: Dada una palabra, la busca letra por letra en un Trie ya exist
                   entonces retorna el dato asociado a esa palabra.
 
 
-PRECONDICIONES: El Trie debe existir
-                La palabra ingresar debe tener al menos un carácter
+PRECONDICIONES:  - El Trie debe existir
+                 - La palabra que se busca debe tener al menos un carácter y contener solo caracteres
+                   válidos (del alfabeto)
 
-POSTCONDICIONES: Retorna el entry (dato) asociado si la palabra existe completa en el Trie
-                 Retorna null si no existe
-                 El Trie no se modifica
+
+POSTCONDICIONES: - Retorna el entry (dato) asociado si la palabra existe completa en el Trie
+                 - Retorna null si no existe
+                 - El Trie no se modifica
 
 PSEUDOCÓDIGOS:
 NodoTrie.buscar(String palabra) {
     nodoActual = this;
-    Para cada letra en palabra {
-        Si nodoActual.hijos no contiene la letra {
+    para cada letra en palabra {
+        indice = letra - 'a';
+        si nodoActual.getHijo(indice) es null {
             retornar null;
         }
-        nodoActual = nodoActual.hijos.get(letra);
+        nodoActual = nodoActual.getHijo(indice);
     }
-    si nodoActual.EsFinDePalabra {;
+    si nodoActual.esFinDePalabra {
         retornar nodoActual.dato;
     } sino {
         retornar null;
     }
 }
 
+
 Trie.buscar(String palabra) {
-    Si raiz es null {
+    si raiz es null {
         retornar null;
     }
     retornar raiz.buscar(palabra);

@@ -1,0 +1,66 @@
+LENGUAJE NATURAL:El metodo predecir recibe un prefijo y devuelve la lista de todas las palabras
+                 almacenadas en el Trie que comienzan con ese prefijo. Funciona en dos fases.
+
+                 En la primera fase, navega por el Trie letra a letra siguiendo los caracteres
+                 del prefijo, arranca en la raíz y en cada paso baja al hijo correspondiente a
+                 la letra actual. Si en algún momento ese hijo no existe, significa
+                 que ninguna palabra del Trie empieza con ese prefijo, por lo que devuelve una
+                 lista vacía.
+
+                 Si logra recorrer el prefijo, queda parado en el nodo donde este termina.
+                 Todas las palabras que empiezan con ese prefijo están almacenadas
+                 en el subárbol que cuelga de ese nodo.
+
+                 En la segunda fase, se invoca al método auxiliar recolectar, que recorre
+                 recursivamente ese subárbol. Por cada nodo visitado, si está marcado como fin
+                 de palabra, agrega su dato asociado a la lista de resultados. Al terminar el
+                 recorrido, la lista contiene todas las palabras que comienzan con el prefijo.
+
+PRECONDICIONES: - El trie debe existir y no ser nulo.
+                - El prefijo debe contener almenos un caracter y debe contener solo caracteres validos
+                  (del alfabeto).
+
+POSTCONDICIONES: - Devuelve una lista de palabras que comienzan con el prefijo dado.
+                 - Si no hay palabras que comienzan con el prefijo, devuelve una lista vacia
+                 - El trie no se modifica durante la ejecucion del metodo.
+
+PSEUDOCÓDIGOS:
+
+NodoTrie.predecir(String prefijo) {
+    resultado = nueva lista enlazada vacía
+    nodoActual = this (nodo raíz del trie)
+
+    para(int i = 0; i < prefijo.length(); i++) {
+        caracter = prefijo.charAt(i)
+        indice = caracter - 'a'
+        si nodoActual.getHijo(indice) es nulo {
+            retornar resultado (lista vacía)
+        }
+        nodoActual = nodoActual.getHijo(indice)
+    }
+
+    recolectar(nodoActual, resultado)
+    retornar resultado
+}
+
+NodoTrie.recolectar(nodoActual, resultado) {
+    si nodoActual.esFinDePalabra {
+        agregar nodoActual.dato a resultado
+    }
+    para(int i = 0; i < 26; i++) {
+        si nodoActual.getHijo(i) no es null {
+            recolectar(nodoActual.getHijo(i), resultado)
+        }
+    }
+}
+
+Trie.predecir(String prefijo) {
+    si raiz es null {
+        retornar nueva lista enlazada vacía
+    }
+    retornar raiz.predecir(prefijo)
+}
+COMPLEJIDAD: - La complejidad del método predecir es O(p + m) donde p es la longitud del prefijo y M
+               es el número de palabras que comienzan con el prefijo. La parte O(p) se debe a la búsqueda,}
+               del nodo correspondiente al prefijo y la parte O(m) se debe a la recolección de las palabras que comienzan con ese prefijo.
+
