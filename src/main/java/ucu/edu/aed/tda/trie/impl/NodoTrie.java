@@ -22,6 +22,18 @@ public class NodoTrie implements TNodoTrie<String> {
 
     @Override
     public Entry<String> buscar(String palabra) {
+        NodoTrie nodoActual = this;
+        for (int i = 0; i < palabra.length(); i++) {
+            char letra = palabra.charAt(i);
+            int indice = letra - 'a';
+            if (nodoActual.hijos[indice] == null) {
+                return null;
+            }
+            nodoActual = nodoActual.hijos[indice];
+        }
+        if (nodoActual.esPalabra()) {
+            return nodoActual.dato;
+        }
         return null;
     }
 
