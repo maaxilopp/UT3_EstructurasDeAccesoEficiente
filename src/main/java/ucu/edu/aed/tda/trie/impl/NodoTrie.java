@@ -8,7 +8,8 @@ import java.util.function.Consumer;
 
 public class NodoTrie implements TNodoTrie<String> {
     private final NodoTrie[] hijos;
-    private String dato;
+    private Entry <String> dato;
+    private boolean esFinDePalabra ;
 
     public NodoTrie() {
         this.hijos = new NodoTrie[26];
@@ -39,7 +40,22 @@ public class NodoTrie implements TNodoTrie<String> {
 
     @Override
     public boolean insertar(String palabra, String dato) {
-        return false;
+        NodoTrie actual = this;
+        for (char s: palabra.toCharArray()){
+            NodoTrie unHijo = actual.hijos[s];
+            if (unHijo.hijos[s] == null) {
+                unHijo = new NodoTrie();
+                actual.hijos[s -'a'] = unHijo;
+            }
+            actual = unHijo;
+        }
+        actual.esFinDePalabra = true;
+        actual.dato = new Entry<>(
+                dato,
+                true,
+                palabra
+        );
+        return true;
     }
 
     @Override
@@ -49,11 +65,13 @@ public class NodoTrie implements TNodoTrie<String> {
 
     @Override
     public String getDato() {
-        return dato;
+        return String.valueOf(dato);
     }
 
     @Override
     public boolean esPalabra() {
-        return dato != null;
+        return dato !=null;
+
+
     }
 }

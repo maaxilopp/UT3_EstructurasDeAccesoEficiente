@@ -1,6 +1,6 @@
 package ucu.edu.aed.medible.lib;
 
-public class Formatter {
+public class   Formatter {
     private static final String[] SI = {"B", "kB", "MB", "GB", "TB", "PB", "EB"};
     private static final String[] IEC = {"B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB"};
 
