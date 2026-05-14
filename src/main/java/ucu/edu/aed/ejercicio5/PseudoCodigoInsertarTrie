@@ -1,0 +1,70 @@
+LENGUAJE NATURAL: El método insertar agrega una palabra al Trie junto con un dato asociado.
+                  Recorre la palabra letra por letra desde la raíz, en cada paso, si el hijo
+                  correspondiente a la letra actual ya existe, baja por él, si no existe, crea
+                  un nuevo Nodo dentro del Trie en esa posición y baja por el recién creado. De esta forma,
+                  al terminar el recorrido queda parado en el nodo que representa la última
+                  letra de la palabra.
+
+                  Antes de marcar ese nodo como fin de palabra, verifica si ya lo era, si sí,
+                  significa que la palabra ya estaba almacenada en el Trie, por lo que no
+                  modifica nada y retorna false. Si no, marca el nodo como fin de palabra,
+                  guarda un Entry con el dato y la palabra completa, y retorna true.
+
+                  De este modo, si la palabra comparte un prefijo con otras palabras ya
+                  presentes en el Trie, los nodos correspondientes a ese prefijo se reutilizan
+                  en lugar de duplicarse (como debería de ser)  solo se crean los nodos nuevos necesarios para
+                  completar la palabra a partir del punto en que se separa del resto.
+
+PRECONDICIONES: - El trie debe existir y no ser nulo.
+                - La palabra a insertar debe contener almenos un caracter y debe contener solo caracteres validos
+                  (del alfabeto).
+
+POSTCONDICIONES: - Si la palabra no estaba en el Trie queda insertada (existe un camino desde
+                   la raíz hasta un nodo fin de palabra que la representa, con un Entry que
+                   contiene el dato, si es fin de palabra y la palabra) y retorna true.
+                 - Si la palabra ya estaba en el Trie el Trie no se modifica y retorna false.
+                 - Si la palabra comparte prefijo con otras palabras ya presentes, se
+                   reutilizan los nodos correspondientes a ese prefijo.
+                 - Las demás palabras del Trie quedan intactas en cualquier caso.
+
+PSEUDOCÓDIGOS:
+
+NodoTrie.insertar(String palabra, dato) {
+    nodoActual = this
+
+    para(int i = 0; i < palabra.length(); i++) {
+        indice = palabra.charAt(i) - 'a'
+
+        si nodoActual.getHijo(indice) es nulo {
+            nuevoNodo = nuevo NodoTrie()
+            nodoActual.setHijo(indice, nuevoNodo)
+        }
+
+        nodoActual = nodoActual.getHijo(indice)
+    }
+
+    si nodoActual.esFinDePalabra {
+        retornar false
+    }
+
+    nodoActual.esFinDePalabra = true
+    nodoActual.dato = entry(dato, true, palabra)
+    retornar true
+}
+
+Trie.insertar(String palabra, dato) {
+    si raiz es null {
+        raiz = nuevo NodoTrie()
+    }
+    retornar raiz.insertar(palabra, dato)
+}
+
+COMPLEJIDAD: - Tiempo: O(m), donde m es la longitud de la palabra a insertar, ya que se
+               recorre la palabra una sola vez con O(1) por letra (acceso al arreglo de
+               hijos).
+            - Espacio adicional:
+                                O(m) en el peor caso, cuando ningún prefijo de la palabra existía y se
+                                 crean m nodos nuevos.
+                                O(1) cuando la palabra ya estaba o se reutilizan todos los nodos del camino.
+
+La complejidad no depende de la cantidad total de palabras almacenadas en el Trie, sino solo de la longitud de la palabra insertada.

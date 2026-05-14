@@ -1,7 +1,7 @@
 LENGUAJE NATURAL:El metodo predecir recibe un prefijo y devuelve la lista de todas las palabras
                  almacenadas en el Trie que comienzan con ese prefijo. Funciona en dos fases.
 
-                 En la primera fase, navega por el Trie letra a letra siguiendo los caracteres
+                 En la primera fase, viaja por el Trie letra a letra siguiendo los caracteres
                  del prefijo, arranca en la raíz y en cada paso baja al hijo correspondiente a
                  la letra actual. Si en algún momento ese hijo no existe, significa
                  que ninguna palabra del Trie empieza con ese prefijo, por lo que devuelve una
@@ -17,8 +17,7 @@ LENGUAJE NATURAL:El metodo predecir recibe un prefijo y devuelve la lista de tod
                  recorrido, la lista contiene todas las palabras que comienzan con el prefijo.
 
 PRECONDICIONES: - El trie debe existir y no ser nulo.
-                - El prefijo debe contener almenos un caracter y debe contener solo caracteres validos
-                  (del alfabeto).
+                - El prefijo debe contener solo caracteres validos (del alfabeto).
 
 POSTCONDICIONES: - Devuelve una lista de palabras que comienzan con el prefijo dado.
                  - Si no hay palabras que comienzan con el prefijo, devuelve una lista vacia
@@ -31,8 +30,7 @@ NodoTrie.predecir(String prefijo) {
     nodoActual = this (nodo raíz del trie)
 
     para(int i = 0; i < prefijo.length(); i++) {
-        caracter = prefijo.charAt(i)
-        indice = caracter - 'a'
+        indice = prefijo.charAt(i) - 'a'
         si nodoActual.getHijo(indice) es nulo {
             retornar resultado (lista vacía)
         }
@@ -60,7 +58,19 @@ Trie.predecir(String prefijo) {
     }
     retornar raiz.predecir(prefijo)
 }
-COMPLEJIDAD: - La complejidad del método predecir es O(p + m) donde p es la longitud del prefijo y M
-               es el número de palabras que comienzan con el prefijo. La parte O(p) se debe a la búsqueda,}
-               del nodo correspondiente al prefijo y la parte O(m) se debe a la recolección de las palabras que comienzan con ese prefijo.
 
+COMPLEJIDAD: - p = longitud del prefijo
+             - k = cantidad de palabras que empiezan con el prefijo
+             - L = suma de las longitudes de esas palabras (cantidad total de caracteres
+                   en el subárbol del prefijo)
+
+             Tiempo: O(p + L)
+             - O(p) recorre el prefijo letra a letra.
+             - O(L)  visita cada nodo del subárbol del prefijo una sola vez.
+
+             Espacio adicional: O(k) por la lista de resultados, más O(altura del
+                                subárbol) por la pila de llamadas recursivas.
+
+             La complejidad no depende de la cantidad total de palabras almacenadas en el
+             Trie, sino solo del prefijo y de las palabras que efectivamente comienzan
+             con él.

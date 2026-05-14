@@ -10,7 +10,7 @@ PRECONDICIONES:  - El Trie debe existir
                    válidos (del alfabeto)
 
 
-POSTCONDICIONES: - Retorna el entry (dato) asociado si la palabra existe completa en el Trie
+POSTCONDICIONES: - Retorna el entry asociado si la palabra existe completa en el Trie
                  - Retorna null si no existe
                  - El Trie no se modifica
 
@@ -42,3 +42,6 @@ Trie.buscar(String palabra) {
 COMPLEJIDAD: La complejidad de esta operación es O(m), donde m es la longitud de la palabra que se está buscando.
              Esto se debe a que en el peor caso, se debe recorrer cada letra de la palabra para verificar su existencia
              en el Trie.
+
+             Espacio adicional: O(1), no se crean estructuras nuevas, solo se usan
+                                referencias a nodos existentes.
