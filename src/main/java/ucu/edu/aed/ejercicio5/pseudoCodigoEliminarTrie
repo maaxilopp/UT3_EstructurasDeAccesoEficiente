@@ -1,0 +1,89 @@
+LENGUAJE NATURAL: El método eliminar quita una palabra del Trie. Primero verifica que la palabra
+                  esté almacenada, osea recorre el Trie letra por letra desde la raíz, y si en algún
+                  paso el hijo correspondiente no existe, o si al llegar al final el nodo no
+                  está marcado como fin de palabra, retorna false porque no hay nada que
+                  eliminar.
+
+                  Si la palabra sí está, no alcanza con desmarcar el último nodo como fin de
+                  palabra, también hay que liberar los nodos del camino que ya no sirven para
+                  nada, osea de la palabra eliminada que dejan de conectar con otras palabras.
+
+
+                  Por ejemplo, si en un Trie con "casa" y "casita" se elimina "casita", se
+                  borran solamente los nodos exclusivos de "casita" (los de las letras 'i',
+                  't' y la 'a' final). El recorrido hacia arriba se frena al llegar al nodo
+                  de la 'a' de "casa", porque ese nodo sigue siendo fin de palabra de "casa"
+                  y no se debe borrar. De esta forma, "casa" queda intacta.
+
+PRECONDICIONES: - El trie debe existir y no ser nulo.
+                - La palabra a eliminar debe contener almenos un caracter y debe contener solo caracteres validos
+                  (del alfabeto).
+
+POSTCONDICIONES: - Si la palabra estaba en el Trie: queda eliminada (ya no existe un camino
+                   desde la raíz hasta un nodo marcado como fin de palabra que la represente)
+                   y retorna true.
+                 - Si la palabra no estaba en el Trie el Trie no se modifica y retorna false.
+                 - Si la palabra comparte prefijo con otras palabras ya presentes, se eliminan solamente
+                   los nodos exclusivos de esa palabra, dejando intactos los nodos compartidos.
+                 - Las demás palabras del Trie quedan intactas en cualquier caso.
+
+PSEUDOCÓDIGO:
+
+NodoTrie.eliminar(String palabra) {
+    nodoActual = this
+    pila = nueva pila vacía
+
+    para(int i = 0; i < palabra.length(); i++) {
+        indice = palabra.charAt(i) - 'a'
+
+        si nodoActual.getHijo(indice) es nulo {
+            retornar false
+        }
+
+        apilar nodoActual en pila
+        nodoActual = nodoActual.getHijo(indice)
+    }
+
+    si !nodoActual.esFinDePalabra {
+        retornar false
+    }
+
+    nodoActual.esFinDePalabra = false
+    nodoActual.dato = null
+
+    mientras !pila.estaVacia() {
+        padre = desapilar de pila
+        indice = palabra.charAt(pila.size()) - 'a'
+
+        si nodoActual.tieneHijos() || nodoActual.esFinDePalabra {
+            romper
+        }
+
+        padre.setHijo(indice, null)
+        nodoActual = padre
+    }
+
+    retornar true
+}
+
+Trie.eliminar(String palabra) {
+    si raiz es nulo {
+        retornar false
+    }
+    retornar raiz.eliminar(palabra)
+}
+
+COMPLEJIDAD: Sea m la longitud de la palabra a eliminar.
+
+            Tiempo: O(m)
+            - Fase de navegación: recorre la palabra letra por letra, apilando los
+              padres, O(m).
+            - Fase de limpieza: en el peor caso, se desapila y se libera un nodo por
+             cada letra,  otra vez O(m).
+            - En total O(m).
+
+            Espacio adicional: O(m)
+            - Por la pila, que contiene a lo sumo m padres.
+
+            La complejidad no depende de la cantidad total de palabras almacenadas en el
+            Trie, sino solo de la longitud de la palabra a eliminar.
