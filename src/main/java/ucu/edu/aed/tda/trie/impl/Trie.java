@@ -1,7 +1,6 @@
 package ucu.edu.aed.tda.trie.impl;
 
 import ucu.edu.aed.tda.trie.Entry;
-import ucu.edu.aed.tda.trie.TNodoTrie;
 import ucu.edu.aed.tda.trie.TTrie;
 
 import java.util.ArrayList;
@@ -9,11 +8,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class Trie implements TTrie {
-    private NodoTrie raiz = null;
-
-    public Trie(NodoTrie raiz) {
-        this.raiz = raiz;
-    }
+    ArrayList <NodoTrie> raiz = null;
 
     @Override
     public void recorrer(Consumer consumer) {
@@ -22,10 +17,7 @@ public class Trie implements TTrie {
 
     @Override
     public Entry buscar(String palabra) {
-        if (raiz ==  null){
-            return null;
-        }
-        return raiz.buscar(palabra);
+        return null;
     }
 
     @Override

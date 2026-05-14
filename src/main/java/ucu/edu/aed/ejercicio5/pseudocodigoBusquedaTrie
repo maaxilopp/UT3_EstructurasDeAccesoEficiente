@@ -1,0 +1,40 @@
+LENGUAJE NATURAL: Dada una palabra, la busca letra por letra en un Trie ya existente. Para cada
+                  letra en palabra, verifica si el hijo del nodo actual contiene la siguiente letra
+                  para completar la palabra. Si la contiene, continua, sino retorna null. Si al finalizar
+                  la busqueda, no solo están todas las letras, sino que  también el nodo final es un nodo de fin de palabra,
+                  entonces retorna el dato asociado a esa palabra.
+
+
+PRECONDICIONES: El Trie debe existir
+                La palabra ingresar debe tener al menos un carácter
+
+POSTCONDICIONES: Retorna el entry (dato) asociado si la palabra existe completa en el Trie
+                 Retorna null si no existe
+                 El Trie no se modifica
+
+PSEUDOCÓDIGOS:
+NodoTrie.buscar(String palabra) {
+    nodoActual = this;
+    Para cada letra en palabra {
+        Si nodoActual.hijos no contiene la letra {
+            retornar null;
+        }
+        nodoActual = nodoActual.hijos.get(letra);
+    }
+    si nodoActual.EsFinDePalabra {;
+        retornar nodoActual.dato;
+    } sino {
+        retornar null;
+    }
+}
+
+Trie.buscar(String palabra) {
+    Si raiz es null {
+        retornar null;
+    }
+    retornar raiz.buscar(palabra);
+}
+
+COMPLEJIDAD: La complejidad de esta operación es O(m), donde m es la longitud de la palabra que se está buscando.
+             Esto se debe a que en el peor caso, se debe recorrer cada letra de la palabra para verificar su existencia
+             en el Trie.
