@@ -1,0 +1,6 @@
+Los resultados muestran que las tres operaciones (inserción, búsqueda exitosa y búsqueda sin éxito)
+aumentan su cantidad promedio de comparaciones a medida que crece el factor de carga,
+Esto coincide con la teoría dada en clase en una tabla hash con sondeo lineal, al estar la tabla
+casi llena, las colisiones se acumulan esto obliga a recorrer cada vez más posiciones para insertar
+o buscar una clave. La degradación es claramente no lineal, mostrando un crecimiento moderado hasta
+el 90% y un salto abrupto en los últimos puntos.
