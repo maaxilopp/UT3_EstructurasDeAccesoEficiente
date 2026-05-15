@@ -1,0 +1,12 @@
+JUSTIFICACION DE LA ELECCIÓN DEL TAMAÑO DE LA TABLA HASH
+
+Se seleccionó un tamaño de tabla m = 13. La elección de un número primo se debe a que mejora la
+distribución de las claves al aplicar la función hash por división, como ya vimos en clase, ya que evita
+agrupamientos cuando las claves comparten divisores con m.
+
+Con n = 12 claves, el factor de carga resulta α = 12/13 = (aprox) 0.92. Este valor es alto para las
+estrategias de direccionamiento abierto (sondeo lineal y cuadrático), donde se recomienda α ≤ 0.75, pero es
+adecuado para encadenamiento separado, que admite α = (aprox) 1 sin pérdida significativa de rendimiento. Aun así,
+se mantuvo m = 13 con fines didácticos, un factor de carga elevado fuerza la aparición de colisiones, lo que
+permite observar y comparar con claridad el comportamiento de cada estrategia de resolución, que es precisamente
+el objetivo del ejercicio.
