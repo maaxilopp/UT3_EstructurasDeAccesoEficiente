@@ -1,4 +1,4 @@
-package ucu.edu.aed.ejercicio7;
+package ucu.edu.aed.ejercicio07;
 
 
 import ucu.edu.aed.medible.lib.Medible;
