@@ -1,0 +1,50 @@
+﻿Ejercicio 14 Unidad temática 3
+
+
+¡Ya lo aclaré en la justificación pero vuelvo a aclarar, parte de mi elección de el tamaño de tabla fue para trabajar direccionamiento abierto como solución a las colisiones, se que quizá sería más conveniente una tabla más grande!
+
+
+
+
+Función seleccionada: Valor de la clave mod 13
+
+
+Sondeo lineal:
+
+
+0
+	1
+	2
+	3
+	4
+	5
+	6
+	7
+	8
+	9
+	10
+	11
+	12
+	76
+	11
+	54
+	29
+	82
+	31
+	45
+	18
+	93
+	68
+	
+
+	37
+	12
+	
+
+Total colisiones: 19
+
+
+Promedio búsqueda exitosa: 2,58
+
+
+Promedio búsqueda no exitosa: 7,00
