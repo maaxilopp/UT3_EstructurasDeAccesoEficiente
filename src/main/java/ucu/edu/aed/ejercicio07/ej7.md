@@ -4,19 +4,19 @@
 
 ### Clases principales
 
-#### `Medible<Data>`
+#### Medible<Data>
 Es una clase abstracta base para las mediciones.  
 Contiene los métodos:
 
-- `medir(int repeticiones, Data data)`
-- `ejecutar(int repeticiones, Data data)`
-- `getObjetoAMedirMemoria()`
+- medir(int repeticiones, Data data)
+- ejecutar(int repeticiones, Data data)
+- getObjetoAMedirMemoria()
 
 Su función es ejecutar una operación, medir su tiempo de ejecución y registrar la memoria consumida por la estructura medida.
 
 ---
 
-#### `Medicion`
+#### Medicion
 Es la clase que guarda el resultado de la medición.  
 Contiene:
 
@@ -29,15 +29,9 @@ Además, permite mostrar el resultado por consola o exportarlo a CSV.
 ---
 
 #### Clases concretas de medición
-Son las clases que extienden `Medible<List<String>>` y realizan la medición de búsqueda sobre cada estructura de datos.
+Son las clases que extienden Medible<List<String>> y realizan la medición de búsqueda sobre cada estructura de datos.
 
-Ejemplo:
-
-- `MedicionBuscarLinkedList`
-- `MedicionBuscarArrayList`
-- `MedicionBuscarTTrie`
-- `MedicionBuscarHashMap`
-- `MedicionBuscarTreeMap`
+Ejemplos: MedicionBuscarLinkedList, MedicionBuscarArrayList, etc
 
 ---
 
@@ -46,7 +40,7 @@ Ejemplo:
 1. Se crea la estructura a medir.
 2. Se cargan los datos.
 3. Se instancia la clase de medición correspondiente.
-4. Se llama a `medir(...)`.
+4. Se llama a medir(...).
 5. Se imprime o guarda el resultado.
 
 Ejemplo:
