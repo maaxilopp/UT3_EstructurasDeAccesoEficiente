@@ -1,0 +1,14 @@
+No cabe duda que la tecnica de hashing mas eficiente en este caso es encadenamiento separado,
+ya que al comparar resultados de las tres tecnicas, es muchisimo mas bajo.
+
+Esto se debe principalmente a que use una carga de 0,92, lo que es muy alto para las tecnicas de
+direccionamiento abierto, y provoca muchas colisiones, lo que a su vez genera largas secuencias de
+sondeo, aumentando significativamente el tiempo de busqueda.
+
+Tecnicamente, si deseo reducir el tiempo de busqueda en las tecnicas de direccionamiento abierto,
+deberia reducir el factor de carga, aumentando el tamaño de la tabla hash, lo que a su vez reduce
+la cantidad de colisiones y por ende el tiempo de busqueda.
+
+En este caso, opte por trabajar el hacer hashing a mano y al tener muchas colisiones me pareció que podía aprender mucho.
+Por ende, era evidente que el encadenamiento separado iba a ser el claro ganador, ya que uno de mis objetivos es que hubiera
+muchas colisiones para poder aprender las diferentes tecnicas de resolucion de estas mismas.
