@@ -1,6 +1,7 @@
 package ucu.edu.aed.ejercicio09;
 
 import ucu.edu.aed.tda.hash.Report;
+import ucu.edu.aed.tda.hash.impl.THashSondeoLineal;
 
 public class Main {
     public static void main(String[] args) {
